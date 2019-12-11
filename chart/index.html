@@ -6,7 +6,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
 </head>
 <body>
-<div style="width: 800px;height: 400px;margin: auto;">
+<div style="width: 850px;height: 400px;margin: auto;">
     <canvas id="chart"></canvas>
 </div>
 <script>
@@ -48,12 +48,14 @@
             ]
         },
         options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero:true
-                    }
-                }]
+            responsive:true,
+            title:{
+                display:true,
+                text:'图表',
+            },
+            tooltips:{
+                mode:'index',
+                intersect:false,
             }
         }
     })
