@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+</head>
+<body>
+<div style="width: 800px;height: 400px;margin: auto;">
+    <canvas id="chart"></canvas>
+</div>
+<script>
+    function random() {
+        return parseInt(Math.random()*100)
+    }
+    var canvas=document.getElementById('chart');
+    var labels=[],data=[],data1=[],date=new Date();
+    var today=date.getDate();
+    var lastDay=new Date(date.getFullYear(),date.getMonth()+1,0).getDate()
+    for (var i=today;i<today+30;i++){
+        if(i>lastDay){
+            labels.push(i-lastDay)
+        }else{
+            labels.push(i)
+        }
+        data.push(random())
+        data1.push(random())
+    }
+    var chart=new Chart(canvas,{
+        type:'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: '第一个线',
+                    data: data,
+                    borderColor: 'rgb(255,0,0,0.5)',
+                    borderWidth: 2,
+                    fill:false
+                },
+                {
+                    label: '第二个线',
+                    data: data1,
+                    borderColor: 'rgb(0,255,0,0.5)',
+                    borderWidth: 2,
+                    fill:false
+                },
+            ]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+    })
+</script>
+</body>
+</html>
