@@ -8,6 +8,7 @@
 <body>
 <div style="width: 850px;height: 400px;margin: auto;">
     <canvas id="chart"></canvas>
+    <button id="randomButton">随机</button>
 </div>
 <script>
     function random() {
@@ -70,6 +71,16 @@
             }
         }
     })
+    document.getElementById('randomButton').onclick=function () {
+        chart.config.data.datasets.forEach(function (item,index) {
+            var _data=[];
+            for (var i=today;i<today+30;i++){
+                _data.push(random())
+            }
+            item.data=_data
+        })
+        chart.update()
+    }
 </script>
 </body>
 </html>
